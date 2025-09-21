@@ -1,0 +1,25 @@
+From 7c0691fd0f17fb3191285bdd209b11550a8ed1f7 Mon Sep 17 00:00:00 2001
+From: CakesTwix <oleg.kiryazov@gmail.com>
+Date: Sat, 6 Sep 2025 07:18:02 -0400
+Subject: [PATCH] Return fd if < 0
+
+Change-Id: I8b68001af77388a9dc2a27a24e7138170c5c94b8
+---
+ bpf/syscall_wrappers/include/BpfSyscallWrappers.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/bpf/syscall_wrappers/include/BpfSyscallWrappers.h b/bpf/syscall_wrappers/include/BpfSyscallWrappers.h
+index a31445ad9f..f2df4b7d7d 100644
+--- a/bpf/syscall_wrappers/include/BpfSyscallWrappers.h
++++ b/bpf/syscall_wrappers/include/BpfSyscallWrappers.h
+@@ -139,7 +139,7 @@ inline int bpfLock(int fd, short type) {
+     int saved_errno = errno;
+     // 4.14+ required to fetch map id, but we don't want to call isAtLeastKernelVersion
+     if (mapId == -1 && saved_errno == EINVAL) return fd;
+-    if (mapId <= 0) abort();  // should not be possible
++    if (mapId <= 0) return fd;  // should not be possible
+ 
+     // on __LP64__ (aka. 64-bit userspace) 'struct flock64' is the same as 'struct flock'
+     struct flock64 fl = {
+-- 
+2.47.2
