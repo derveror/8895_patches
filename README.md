@@ -1,5 +1,5 @@
 ```
-git clone https://github.com/derveror/8895_patches.git -b main ~/8895_patches
+git clone https://github.com/derveror/8895_patches.git -b lineage-22.2 ~/8895_patches
 ```
 
 Copy the apply.sh script into the root of the android build directory.
