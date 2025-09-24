@@ -52,7 +52,6 @@ index a2f17c22b9b..506b3bca679 100644
 -        "libstagefright_soft_mpeg4dec",
 -        "libstagefright_soft_mpeg4enc",
 -        "libstagefright_soft_opusdec",
--        "libstagefright_soft_rawdec",
 -        "libstagefright_soft_vorbisdec",
 -        "libstagefright_soft_vpxdec",
 -        "libstagefright_soft_vpxenc",
